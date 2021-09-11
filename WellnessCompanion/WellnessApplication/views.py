@@ -10,6 +10,8 @@ import uuid
 from .models import Activity
 # Create your views here.
 def companionpage(request):
+    if request.method == "POST":
+        return HttpResponse("no")
     latest_activity_category = Activity.objects.order_by('-date')[:50]
     count = {}
     for i in latest_activity_category:
