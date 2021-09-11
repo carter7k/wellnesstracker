@@ -8,6 +8,8 @@ import uuid
 class User(models.Model):
     name = models.CharField(max_length=200)
     UUID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    def __str__(self):
+        return self.name
 
 class Activity(models.Model):
     date = models.DateTimeField("publish date")
