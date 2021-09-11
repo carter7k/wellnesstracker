@@ -18,7 +18,7 @@
     
         <script>
             const month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-            const activity_categories = [["MSM","Mindfulness and Stress Managment","#0099ff"],["PH","Physical Health","#ffcc00"],["N","Nutrition","#00ff00"]];
+            const activity_categories = [["Mindfulness and Stress Managment","#0099ff"],["Physical Health","#ffcc00"],["Nutrition","#00ff00"]];
             var years = [];
             var months = [];
             var days = [];
@@ -50,8 +50,8 @@
                 
                 for (const label of activity_categories){
                     if (category == label[0]){
-                        actual_category = label[1];
-                        var color = label[2]; 
+                        actual_category = label[0];
+                        var color = label[1]; 
                     }
                 }
                 document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}} for {{activity.time_spent}} minutes!</p>";

@@ -17,8 +17,6 @@ def companionpage(request):
             count[i.activity_catergory] = 1
         else:
             count[i.activity_catergory] += 1
-
-
     output = sorted(count)[0]
     return HttpResponse(output)
 def submitpage(request):
@@ -47,8 +45,8 @@ def submitdata(request, userid):
         return submitpage(request)
 
 def logpage(request):
-    #user = User.objects.get(name = "Brian")
-    #activities = Activity.objects.filter(personID = user.UUID)
+    # user = User.objects.get(name = "Brian")
+    # activities = Activity.objects.filter(personID = user.UUID)
     activities = Activity.objects.all()
     template = loader.get_template('WellnessApplication/logs.html')
     context = {

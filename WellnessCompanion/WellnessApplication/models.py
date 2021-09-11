@@ -18,7 +18,7 @@ class Activity(models.Model):
         ('Physical Health', 'Physical Health'),
         ('Nutrition', 'Nutrition'),
     ]
-    activity_catergory = models.CharField(max_length=40,choices=CATEGORIES, default="MSM")
+    activity_catergory = models.CharField(max_length=40,choices=CATEGORIES, default="Mindfulness and Stress Managment")
     activity_type = models.CharField(max_length=200)
     time_spent = models.PositiveIntegerField(default=0)
     personID = models.ForeignKey(User, on_delete=models.CASCADE)
