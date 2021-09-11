@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <style>
+            h1 {text-align: center; font-size: 100px;font-family: Georgia, serif;}
+            h2 {text-align: center;font-size: 60px;font-family: Georgia, serif;}
+            h4 {text-align: center;font-size: 40px;font-family: Georgia, serif;}
+            p {text-align: center;font-size: 40px;font-family: Georgia, serif;}
+            a {font-size: 40px;font-family: Georgia, serif;}
+        </style>
+    </head>
+<body>
+    <div id = "THELIST" style="background-color: #f0f7ff;">
+    <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
+    <a href="/companion" style=" position: absolute; right: 10px;">My Companion</a>
+    <h2>My History</h2>
+    
+{% if activities %}
+    
+        <script>
+            const month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            const activity_categories = [["MSM","Mindfulness and Stress Managment","#0099ff"],["PH","Physical Health","#ffcc00"],["N","Nutrition","#00ff00"]];
+            var years = [];
+            var months = [];
+            var days = [];
+        </script>
+        {% for activity in activities %}
+            <script>
+                var year = "{{ activity.date.year }}";
+                if (!years.includes(year)){
+                    document.getElementById("THELIST").innerHTML += "<h1>"+year+"</h1>";
+                    years.push(year);
+                    months = [];
+                    days = [];
+                }
+
+                var month = "{{ activity.date.month }}";
+                if (!months.includes(month)){
+                    document.getElementById("THELIST").innerHTML += "<h2>"+month_names[month-1]+"</h2>";
+                    months.push(month);
+                    days = [];
+                }
+                
+                var day = "{{ activity.date.day }}";
+                if (!days.includes(day)){
+                    document.getElementById("THELIST").innerHTML += "<h4>"+day+"</h4>";
+                    days.push(day);
+                }
+                var category = "{{activity.activity_catergory}}";
+                var actual_category = "";
+                
+                for (const label of activity_categories){
+                    if (category == label[0]){
+                        actual_category = label[1];
+                        var color = label[2]; 
+                    }
+                }
+                document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}} for {{activity.time_spent}} minutes!</p>";
+            </script>
+        {% endfor %}
+{% else %}
+    <p>No activities recorded yet.</p>
+{% endif %}
+</div>
+</body>
+</html>
