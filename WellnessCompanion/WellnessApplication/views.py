@@ -21,7 +21,7 @@ def submitpage(request):
 def logpage(request):
     # user = User.objects.get(name = "Brian")
     # activities = Activity.objects.filter(personID = user.UUID)
-    activities = Activity.objects.all()
+    activities = Activity.objects.order_by("-date")
     template = loader.get_template('WellnessApplication/logs.html')
     context = {
         'activities': activities,
