@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.utils.translation import activate
 from .models import Activity, User
 from django.shortcuts import get_object_or_404, render
@@ -6,21 +5,11 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 import datetime
 import uuid
-=======
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import User, Activity
-from django.template import loader
->>>>>>> main
 
 
 from .models import Activity
 # Create your views here.
 def companionpage(request):
-<<<<<<< HEAD
-    return HttpResponse("This is the companion page")
-
-=======
     latest_activity_category = Activity.objects.order_by('-date')[:50]
     count = {}
     for i in latest_activity_category:
@@ -32,7 +21,6 @@ def companionpage(request):
 
     output = sorted(count)[0]
     return HttpResponse(output)
->>>>>>> main
 def submitpage(request):
     context = {'userid': '7a16c3cf-a5d5-462b-96b5-210cc694a881'}
     return render(request, 'WellnessApplication/submit_activity.html', context)
@@ -59,8 +47,9 @@ def submitdata(request, userid):
         return submitpage(request)
 
 def logpage(request):
-    user = User.objects.get(name = "Brian")
-    activities = Activity.objects.filter(personID = user.UUID)
+    #user = User.objects.get(name = "Brian")
+    #activities = Activity.objects.filter(personID = user.UUID)
+    activities = Activity.objects.all()
     template = loader.get_template('WellnessApplication/logs.html')
     context = {
         'activities': activities,
