@@ -17,7 +17,16 @@ def companionpage(request):
             count[i.activity_catergory] = 1
         else:
             count[i.activity_catergory] += 1
-    output = sorted(count)[0]
+    least_done = ''
+    lowest_count = 51
+    for i in count:
+        if count[i] < lowest_count:
+            least_done = i
+            lowest_count = count[i]
+
+
+
+    output = least_done
     return HttpResponse(output)
 def submitpage(request):
     context = {'userid': '7a16c3cf-a5d5-462b-96b5-210cc694a881'}
