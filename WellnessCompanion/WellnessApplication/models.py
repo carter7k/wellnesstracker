@@ -14,7 +14,6 @@ class User(models.Model):
 class Activity(models.Model):
     date = models.DateTimeField("publish date")
     CATEGORIES = [
-        
         ('Mindfulness and Stress Managment', 'Mindfulness and Stress Managment'),
         ('Physical Health', 'Physical Health'),
         ('Nutrition', 'Nutrition'),
