@@ -1,9 +1,18 @@
+
+<head>
+    <style>
+        a {font-size: 40px;font-family: Georgia, serif;}
+    </style>
+</head>
+<a href="/logs" style="text-align: left;">View Log</a>
+<a href="/companion" style=" position: absolute; right: 10px;">My Companion</a>
+
 <h1>Submit Activity</h1>
 
 <form action="{% url 'submitdata' userid %}" method="post">
 
 {% csrf_token %}
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}<p style="color:red";><strong>{{ error_message }}</strong></p>{% endif %}
 
 <legend><h2>Choose Activity Category</h2></legend>
 <input type="radio" name="activity_category" id="choice 0" value="Mindfulness and Stress Managment">

@@ -15,6 +15,8 @@ def companionpage(request):
     'Nutrition': ["eat an apple", "eat a banana", "eat some carrots", "plan a meal", "prepare a healthy lunch instead of eating out"],
     }
 
+    if request.method == "POST":
+        return HttpResponse("no")
     latest_activity_category = Activity.objects.order_by('-date')[:50]
     count = {}
     for i in latest_activity_category:
@@ -33,9 +35,17 @@ def companionpage(request):
 
     output = least_done
     random_activity = random.choice(activity_suggestions[output])
-    return HttpResponse(output)
+    
 
 
+
+
+    template = loader.get_template('WellnessApplication/companion.html')
+    context = {
+        'output': output,
+        'random_activity':random_activity,
+    }
+    return HttpResponse(template.render(context, request))
 def submitpage(request):
     context = {'userid': '7a16c3cf-a5d5-462b-96b5-210cc694a881'}
     return render(request, 'WellnessApplication/submit_activity.html', context)
@@ -57,14 +67,14 @@ def submitdata(request, userid):
         activity.activity_type = request.POST.get('activity_completed')
         activity.date = datetime.datetime.now()
         activity.save()
-        return HttpResponse("Your form has been submitted")
+        return render(request, 'WellnessApplication/successful_submission.html', {})
     else:
         return submitpage(request)
 
 def logpage(request):
     # user = User.objects.get(name = "Brian")
     # activities = Activity.objects.filter(personID = user.UUID)
-    activities = Activity.objects.all()
+    activities = Activity.objects.order_by("-date")
     template = loader.get_template('WellnessApplication/logs.html')
     context = {
         'activities': activities,

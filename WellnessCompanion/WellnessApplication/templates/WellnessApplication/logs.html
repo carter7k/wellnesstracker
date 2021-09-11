@@ -8,8 +8,8 @@
             a {font-size: 40px;font-family: Georgia, serif;}
         </style>
     </head>
-<body>
-    <div id = "THELIST" style="background-color: #f0f7ff;">
+<body  style="background-color: #f0f7ff;">
+    <div id = "THELIST">
     <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
     <a href="/companion" style=" position: absolute; right: 10px;">My Companion</a>
     <h2>My History</h2>
@@ -54,6 +54,7 @@
                         var color = label[1]; 
                     }
                 }
+                console.log("{{activity.activity_type}}");
                 document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}} for {{activity.time_spent}} minutes!</p>";
             </script>
         {% endfor %}
