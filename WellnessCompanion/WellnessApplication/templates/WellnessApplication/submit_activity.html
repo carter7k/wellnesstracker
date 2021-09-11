@@ -1,8 +1,9 @@
 <h1>Submit Activity</h1>
 
-<form action="WellnessApplication:submit", method="post">
+<form action="{% url 'submitdata' userid %}" method="post">
 
 {% csrf_token %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <legend><h2>Choose Activity Category</h2></legend>
 <input type="radio" name="activity_category" id="choice 0" value="Mindfulness and Stress Managment">
