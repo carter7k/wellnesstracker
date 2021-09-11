@@ -28,7 +28,9 @@ def companionpage(request):
 def submitpage(request):
     return HttpResponse("This is the submit page")
 def logpage(request):
-    activities = Activity.objects.order_by('-date')
+    # user = User.objects.get(name = "Brian")
+    # activities = Activity.objects.filter(personID = user.UUID)
+    activities = Activity.objects.all()
     template = loader.get_template('WellnessApplication/logs.html')
     context = {
         'activities': activities,
