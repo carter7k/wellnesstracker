@@ -10,6 +10,11 @@ import uuid
 from .models import Activity
 # Create your views here.
 def companionpage(request):
+    activity_suggestions = {'Mindfulness and Stress Managment': ["pop bubble wrap", "meditate", "breathe deeply", "listen to music" ],
+    'Physical Health': ["running", "pushups", "squats", "bike", "stretch", "yoga", "swimming", "walking"],
+    'Nutrition': ["eat an apple", "eat a banana", "eat some carrots", "plan a meal", "prepare a healthy lunch instead of eating out"],
+    }
+
     latest_activity_category = Activity.objects.order_by('-date')[:50]
     count = {}
     for i in latest_activity_category:
