@@ -13,7 +13,14 @@ class User(models.Model):
 
 class Activity(models.Model):
     date = models.DateTimeField("publish date")
-    activity_type = "placeholder activity"
+    CATEGORIES = [
+        
+        ('MSM', 'Mindfulness and Stress Managment'),
+        ('PH', 'Physical Health'),
+        ('N', 'Nutrition'),
+    ]
+    activity_catergory = models.CharField(max_length=40,choices=CATEGORIES)
+    activity_type = models.CharField(max_length=200)
     personID = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.activity_type
