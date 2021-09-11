@@ -34,6 +34,10 @@ def companionpage(request):
 
 
     output = least_done
+    if output == '':
+        output = random.choice(list(activity_suggestions.keys()))
+
+
     random_activity = random.choice(activity_suggestions[output])
     
 
