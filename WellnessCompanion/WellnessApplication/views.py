@@ -5,11 +5,16 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 import datetime
 import uuid
-
+import random
 
 from .models import Activity
 # Create your views here.
 def companionpage(request):
+    activity_suggestions = {'Mindfulness and Stress Managment': ["pop bubble wrap", "meditate", "breathe deeply", "listen to music" ],
+    'Physical Health': ["running", "pushups", "squats", "bike", "stretch", "yoga", "swimming", "walking"],
+    'Nutrition': ["eat an apple", "eat a banana", "eat some carrots", "plan a meal", "prepare a healthy lunch instead of eating out"],
+    }
+
     if request.method == "POST":
         return HttpResponse("no")
     latest_activity_category = Activity.objects.order_by('-date')[:50]
@@ -29,11 +34,16 @@ def companionpage(request):
 
 
     output = least_done
+    random_activity = random.choice(activity_suggestions[output])
+    
+
+
 
 
     template = loader.get_template('WellnessApplication/companion.html')
     context = {
         'output': output,
+        'random_activity':random_activity,
     }
     return HttpResponse(template.render(context, request))
 def submitpage(request):
