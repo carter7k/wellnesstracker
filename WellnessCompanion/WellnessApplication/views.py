@@ -5,7 +5,7 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 import datetime
 import uuid
-
+import random
 
 from .models import Activity
 # Create your views here.
@@ -32,7 +32,10 @@ def companionpage(request):
 
 
     output = least_done
+    random_activity = random.choice(activity_suggestions[output])
     return HttpResponse(output)
+
+
 def submitpage(request):
     context = {'userid': '7a16c3cf-a5d5-462b-96b5-210cc694a881'}
     return render(request, 'WellnessApplication/submit_activity.html', context)
