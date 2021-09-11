@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <style>
+            a {font-size: 40px;font-family: Georgia, serif;}
+        </style>
+    </head>
+
+    <body style="background-color: #f0f7ff;">
+        <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
+        <a href="/logs" style=" position: absolute; right: 10px;">View Log</a>
+        {% if output %}
+            <p>{{output}}</p>
+        {% else %}
+            <p>I have nothing to say. Fix me!</p>
+        {% endif %}
+    </body>
+</html>

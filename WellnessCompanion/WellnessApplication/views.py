@@ -27,7 +27,13 @@ def companionpage(request):
 
 
     output = least_done
-    return HttpResponse(output)
+
+
+    template = loader.get_template('WellnessApplication/companion.html')
+    context = {
+        'output': output,
+    }
+    return HttpResponse(template.render(context, request))
 def submitpage(request):
     context = {'userid': '7a16c3cf-a5d5-462b-96b5-210cc694a881'}
     return render(request, 'WellnessApplication/submit_activity.html', context)
