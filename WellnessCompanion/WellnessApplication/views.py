@@ -49,7 +49,7 @@ def submitdata(request, userid):
         activity.activity_type = request.POST.get('activity_completed')
         activity.date = datetime.datetime.now()
         activity.save()
-        return HttpResponse("Your form has been submitted")
+        return render(request, 'WellnessApplication/successful_submission.html', {})
     else:
         return submitpage(request)
 
