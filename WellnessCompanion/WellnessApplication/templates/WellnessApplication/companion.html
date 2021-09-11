@@ -3,8 +3,13 @@
         <style>
             a {font-size: 40px;font-family: Georgia, serif;}
             p {font-size: 70px; text-align: center;font-family: Georgia, serif;}
+            .wrapper {
+                text-align: center;
+            }
+
         </style>
     </head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 
     <body style="background-color: #f0f7ff;">
@@ -15,5 +20,23 @@
         {% else %}
             <p>I have nothing to say. Fix me!</p>
         {% endif %}
+
+        <div class="wrapper">
+            <input id = "quoteButton" type="submit" value="Inspire Me!" style="font-size: 40px;" />
+        </div>
+        <p id = "Quote"></p>
+        <script>
+            $('#quoteButton').click(function() { 
+                $.ajax({
+                    url: '/companion',
+                    type: 'POST',
+                    data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+                    success: function (result) {
+                        document.getElementById("Quote").innerHTML = result;
+                    }
+                });  
+    
+            });
+        </script>
     </body>
 </html>
