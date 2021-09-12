@@ -9,7 +9,7 @@
 
 <h1>Submit Activity</h1>
 
-<form action="{% url 'submitdata' userid %}" method="post">
+<form action="{% url 'submitdata'%}" method="post">
 
 {% csrf_token %}
 {% if error_message %}<p style="color:red";><strong>{{ error_message }}</strong></p>{% endif %}
