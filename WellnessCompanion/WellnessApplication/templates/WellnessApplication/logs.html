@@ -10,9 +10,14 @@
     </head>
 <body  style="background-color: #f0f7ff;">
     <div id = "THELIST">
-    <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
-    <a href="/companion" style=" position: absolute; right: 10px;">My Companion</a>
-    <h2>My History</h2>
+        <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
+        <a href="/companion" style=" position: absolute; right: 10px;">My Companion</a>
+        <div id = "Statistics" style = "text-align: left; font-size:20px;">
+            <h3>Total time spent:</h3>
+            <p id = "MSM" style = "text-align: left; font-size:20px;"></p>
+            <p id = "PH" style = "text-align: left; font-size:20px;"></p>
+        </div>
+        <h2>My History</h2>
     
 {% if activities %}
     
@@ -22,6 +27,9 @@
             var years = [];
             var months = [];
             var days = [];
+            var PHtime = 0;
+            var MSMtime = 0;
+            
         </script>
         {% for activity in activities %}
             <script>
@@ -59,10 +67,20 @@
                     document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}}</p>";
                 }else{
                     document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}} for {{activity.time_spent}} minutes!</p>";
-
                 }
+                var time = parseInt("{{activity.time_spent}}");
+                if (category == "Mindfulness and Stress Managment"){
+                    MSMtime += time;
+                }else if (category == "Physical Health"){
+                    PHtime += time;
+                }
+                console.log(category + time);
             </script>
         {% endfor %}
+        <script>
+            document.getElementById("MSM").innerHTML = "Mindfulness and Stress Management: "+MSMtime; 
+            document.getElementById("PH").innerHTML = "Physical Health: "+PHtime; 
+        </script>
 {% else %}
     <p>No activities recorded yet.</p>
 {% endif %}
