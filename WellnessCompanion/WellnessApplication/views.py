@@ -38,6 +38,9 @@ def companionpage(request):
         if count[i] < lowest_count:
             least_done = i
             lowest_count = count[i]
+        elif count[i] == lowest_count:
+            if random.randint(0,1) == 0:
+                least_done = i
 
     
 
