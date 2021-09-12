@@ -16,8 +16,7 @@
     <body style="background-color: #f0f7ff;">
         <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
         <a href="/logs" style=" position: absolute; right: 10px;">View Log</a>
-        {% load static %}
-        <img src="{% static 'WellnessApplication/avatar.png' %}" alt="My image">
+
         {% if output %}
 
         <div id="text_colour"></div>
@@ -41,6 +40,11 @@
         {% else %}
             <p>I have nothing to say. Fix me!</p>
         {% endif %}
+        {% load static %}
+        <img  style = "display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;" src="{% static 'WellnessApplication/avatar.png' %}" alt="My image">
 
         <div class="wrapper">
             <input id = "quoteButton" type="submit" value="Inspire Me!" style="font-size: 40px;" />
