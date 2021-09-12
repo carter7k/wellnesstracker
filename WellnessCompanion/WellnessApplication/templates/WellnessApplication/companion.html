@@ -16,8 +16,8 @@
         <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
         <a href="/logs" style=" position: absolute; right: 10px;">View Log</a>
         {% if output %}
-            <p>{{output}}</p>
-            <p>{{random_activity}}</p>
+            <p>The Category you have done the least is: {{output}}</p>
+            <p>How about you try: {{random_activity}}</p>
         {% else %}
             <p>I have nothing to say. Fix me!</p>
         {% endif %}
