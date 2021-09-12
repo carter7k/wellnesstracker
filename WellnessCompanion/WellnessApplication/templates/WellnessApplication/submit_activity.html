@@ -4,36 +4,39 @@
         a {font-size: 40px;font-family: Georgia, serif;}
     </style>
 </head>
-<a href="/logs" style="text-align: left;">View Log</a>
-<a href="/companion" style=" position: absolute; right: 10px;">My Companion</a>
 
-<h1>Submit Activity</h1>
+<body style="background-color: #f0f7ff;">
+    <a href="/logs" style="text-align: left;">View Log</a>
+    <a href="/companion" style=" position: absolute; right: 10px;">My Companion</a>
 
-<form action="{% url 'submitdata'%}" method="post">
+    <h1>Submit Activity</h1>
 
-{% csrf_token %}
-{% if error_message %}<p style="color:red";><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'submitdata'%}" method="post">
 
-<legend><h2>Choose Activity Category</h2></legend>
-<input type="radio" name="activity_category" id="choice 0" value="Mindfulness and Stress Managment">
-<label for="choice 0">Mindfulness and Stress Managment</label><br>
-<input type="radio" name="activity_category" id="choice 1" value="Physical Health">
-<label for="choice 1">Physical Health</label><br>
-<input type="radio" name="activity_category" id="choice 2" value="Nutrition">
-<label for="choice 2">Nutrition</label><br>
+    {% csrf_token %}
+    {% if error_message %}<p style="color:red";><strong>{{ error_message }}</strong></p>{% endif %}
 
-<br>
-<br>
+    <legend><h2>Choose Activity Category</h2></legend>
+    <input type="radio" name="activity_category" id="choice 0" value="Mindfulness and Stress Managment">
+    <label for="choice 0">Mindfulness and Stress Managment</label><br>
+    <input type="radio" name="activity_category" id="choice 1" value="Physical Health">
+    <label for="choice 1">Physical Health</label><br>
+    <input type="radio" name="activity_category" id="choice 2" value="Nutrition">
+    <label for="choice 2">Nutrition</label><br>
 
-<label for="act_comp">Activity Completed:</label>
-<input type="text" id="act_comp" name="activity_completed"><br>
+    <br>
+    <br>
 
-<br>
+    <label for="act_comp">Activity Completed:</label>
+    <input type="text" id="act_comp" name="activity_completed"><br>
 
-<label for="act_dur">Activity Duration (Minutes):</label>
-<input type="number" id="act_dur" name="activity_duration"><br>
+    <br>
 
-<br>
+    <label for="act_dur">Activity Duration (Minutes):</label>
+    <input type="number" id="act_dur" name="activity_duration"><br>
 
-<input type="submit" value="Submit Activity">
-</form>
+    <br>
+
+    <input type="submit" value="Submit Activity">
+    </form>
+</body>
