@@ -7,4 +7,5 @@ urlpatterns = [
     path('submit', views.submitpage, name='submitpage'),
     path('submitdata', views.submitdata, name='submitdata'),
     path('logs', views.logpage, name='logpage'),
+    
 ]
