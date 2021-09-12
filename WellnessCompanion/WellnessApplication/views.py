@@ -9,7 +9,7 @@ import random
 from .models import Activity
 # Create your views here.
 def companionpage(request):
-    activity_suggestions = {'Mindfulness and Stress Managment': ["Popping bubble wrap", "To meditate", "Breathing deeply", "Listening to music" ],
+    activity_suggestions = {'Mindfulness and Stress Management': ["Popping bubble wrap", "To meditate", "Breathing deeply", "Listening to music" ],
     'Physical Health': ["Running", "Pushups", "Squats", "Biking", "Stretching", "Yoga", "Swimming", "Walking"],
     'Nutrition': ["To eat an apple", "To eat a banana", "To eat some carrots", "planning a meal", "Preparing a healthy lunch instead of eating out"],
     }

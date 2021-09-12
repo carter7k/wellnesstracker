@@ -25,7 +25,7 @@
     
         <script>
             const month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-            const activity_categories = [["Mindfulness and Stress Managment","#0099ff"],["Physical Health","#ffcc00"],["Nutrition","#00ff00"]];
+            const activity_categories = [["Mindfulness and Stress Management","#0099ff"],["Physical Health","#ffcc00"],["Nutrition","#00ff00"]];
             var years = [];
             var months = [];
             var days = [];
@@ -66,7 +66,7 @@
                 }
                 console.log("{{activity.activity_type}}");
                 var minutes = "{{activity.date.minute}}";
-                
+
                 if (minutes < 10){
                     minutes = "0"+minutes;
                 }
@@ -76,7 +76,7 @@
                     document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:"+minutes+" for {{activity.time_spent}} minutes!</p>";
                 }
                 var time = parseInt("{{activity.time_spent}}");
-                if (category == "Mindfulness and Stress Managment"){
+                if (category == "Mindfulness and Stress Management"){
                     MSMtime += time;
                 }else if (category == "Physical Health"){
                     PHtime += time;

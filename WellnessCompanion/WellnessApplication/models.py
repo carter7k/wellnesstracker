@@ -10,11 +10,11 @@ class Activity(models.Model):
     date = models.DateTimeField("publish date")
     CATEGORIES = [
         
-        ('Mindfulness and Stress Managment', 'Mindfulness and Stress Managment'),
+        ('Mindfulness and Stress Management', 'Mindfulness and Stress Management'),
         ('Physical Health', 'Physical Health'),
         ('Nutrition', 'Nutrition'),
     ]
-    activity_catergory = models.CharField(max_length=40,choices=CATEGORIES, default="Mindfulness and Stress Managment")
+    activity_catergory = models.CharField(max_length=40,choices=CATEGORIES, default="Mindfulness and Stress Management")
     activity_type = models.CharField(max_length=200)
     time_spent = models.PositiveIntegerField(default=0)
 
