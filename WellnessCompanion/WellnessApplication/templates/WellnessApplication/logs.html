@@ -17,7 +17,9 @@
             <p id = "MSM" style = "text-align: left; font-size:20px;"></p>
             <p id = "PH" style = "text-align: left; font-size:20px;"></p>
         </div>
+
         <h2>My History</h2>
+        
     
 {% if activities %}
     
@@ -85,5 +87,11 @@
     <p>No activities recorded yet.</p>
 {% endif %}
 </div>
+    {% load static %}
+    <img  style = "display: block;
+    width: 20%; display: block;
+        margin-left: auto;
+        margin-right: auto;
+        " src="{% static 'WellnessApplication/avatar3.png' %}" alt="My image">
 </body>
 </html>
