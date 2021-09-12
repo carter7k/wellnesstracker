@@ -16,7 +16,13 @@ def companionpage(request):
     }
 
     if request.method == "POST":
-        return HttpResponse("no")
+        with open("WellnessApplication/quotes.txt") as fp:
+            line_chosen = random.randint(0,sum(1 for line in open('WellnessApplication/quotes.txt'))-1) # 0 to 27
+            for i, line in enumerate(fp): #0 all the way to 27 ,28 times
+                if i == line_chosen:
+                    inspirational_response = line
+                    break
+        return HttpResponse(inspirational_response)
     latest_activity_category = Activity.objects.order_by('-date')[:50]
     count = {}
     for i in latest_activity_category:

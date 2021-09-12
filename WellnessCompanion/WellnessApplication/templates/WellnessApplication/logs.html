@@ -55,7 +55,12 @@
                     }
                 }
                 console.log("{{activity.activity_type}}");
-                document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}} for {{activity.time_spent}} minutes!</p>";
+                if (category == "Nutrition"){
+                    document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}}</p>";
+                }else{
+                    document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}} for {{activity.time_spent}} minutes!</p>";
+
+                }
             </script>
         {% endfor %}
 {% else %}
