@@ -12,11 +12,29 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     
+
     <body style="background-color: #f0f7ff;">
         <a href="/submit" style="text-align: left;">Submit a daily activity!</a>
         <a href="/logs" style=" position: absolute; right: 10px;">View Log</a>
         {% if output %}
-            <p>The Category you have done the least is: {{output}}</p>
+
+        <div id="text_colour"></div>
+
+        <script>
+            const activity_categories = [["Mindfulness and Stress Managment","#0099ff"],["Physical Health","#ffcc00"],["Nutrition","#00ff00"]];
+            var output = "{{ output}}";
+    
+            for (const label of activity_categories){
+                console.log(output)
+                if (output == label[0]){
+                    
+                    var color = label[1]; 
+                }
+            }
+            console.log(output)
+            document.getElementById("text_colour").innerHTML = "<p style='background-color:"+color+"';> The Category you have done the least is: {{ output }} </p>";
+        </script>
+            
             <p>How about you try: {{random_activity}}</p>
         {% else %}
             <p>I have nothing to say. Fix me!</p>
