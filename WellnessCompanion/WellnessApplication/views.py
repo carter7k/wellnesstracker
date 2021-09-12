@@ -9,12 +9,9 @@ import random
 from .models import Activity
 # Create your views here.
 def companionpage(request):
-    
-
-
-    activity_suggestions = {'Mindfulness and Stress Managment': ["pop bubble wrap", "meditate", "breathe deeply", "listen to music" ],
-    'Physical Health': ["running", "pushups", "squats", "bike", "stretch", "yoga", "swimming", "walking"],
-    'Nutrition': ["eat an apple", "eat a banana", "eat some carrots", "plan a meal", "prepare a healthy lunch instead of eating out"],
+    activity_suggestions = {'Mindfulness and Stress Managment': ["Popping bubble wrap", "To meditate", "Breathing deeply", "Listening to music" ],
+    'Physical Health': ["Running", "Pushups", "Squats", "Biking", "Stretching", "Yoga", "Swimming", "Walking"],
+    'Nutrition': ["To eat an apple", "To eat a banana", "To eat some carrots", "planning a meal", "Preparing a healthy lunch instead of eating out"],
     }
 
     if request.method == "POST":
@@ -41,6 +38,9 @@ def companionpage(request):
         if count[i] < lowest_count:
             least_done = i
             lowest_count = count[i]
+        elif count[i] == lowest_count:
+            if random.randint(0,1) == 0:
+                least_done = i
 
     
 
