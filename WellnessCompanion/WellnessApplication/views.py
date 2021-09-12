@@ -24,6 +24,9 @@ def companionpage(request):
             count[i.activity_catergory] = 1
         else:
             count[i.activity_catergory] += 1
+    
+
+
     least_done = ''
     lowest_count = 51
     for i in count:
@@ -31,11 +34,16 @@ def companionpage(request):
             least_done = i
             lowest_count = count[i]
 
-
+    
 
     output = least_done
-    if output == '':
-        output = random.choice(list(activity_suggestions.keys()))
+
+    random_list = []
+    for i in list(activity_suggestions.keys()):
+        if i not in count:
+            random_list.append(i)
+    if len(random_list) > 0:
+        output = random.choice(random_list)
 
 
     random_activity = random.choice(activity_suggestions[output])
