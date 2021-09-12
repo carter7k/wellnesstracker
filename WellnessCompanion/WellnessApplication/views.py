@@ -104,5 +104,6 @@ def logpage(request):
     context = {
         'activities': activities,
     }
+    print(activities[0].date.minute)
     return HttpResponse(template.render(context, request))
     # return HttpResponse("This is the log page")

@@ -65,10 +65,15 @@
                     }
                 }
                 console.log("{{activity.activity_type}}");
+                var minutes = "{{activity.date.minute}}";
+                
+                if (minutes < 10){
+                    minutes = "0"+minutes;
+                }
                 if (category == "Nutrition"){
-                    document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}}</p>";
+                    document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:"+minutes+"</p>";
                 }else{
-                    document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:{{activity.date.minute}} for {{activity.time_spent}} minutes!</p>";
+                    document.getElementById("THELIST").innerHTML += "<p style='background-color:"+color+"';>"+actual_category+" - {{activity.activity_type}} at {{ activity.date.hour}}:"+minutes+" for {{activity.time_spent}} minutes!</p>";
                 }
                 var time = parseInt("{{activity.time_spent}}");
                 if (category == "Mindfulness and Stress Managment"){
