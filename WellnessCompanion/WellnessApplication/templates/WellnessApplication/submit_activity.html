@@ -11,14 +11,14 @@
 
     <div style="text-align: center;">
         <div style="display: inline-block; text-align: left;">
-            <h1>Submit Activity</h1>
+            <h1>Submit an Activity</h1>
 
             <form action="{% url 'submitdata'%}" method="post">
         
             {% csrf_token %}
             {% if error_message %}<p style="color:red";><strong>{{ error_message }}</strong></p>{% endif %}
         
-            <legend><h2>Choose Activity Category</h2></legend>
+            <p;><b>Choose Activity Category</b></p>
             <input type="radio" name="activity_category" id="choice 0" value="Mindfulness and Stress Managment">
             <label for="choice 0">Mindfulness and Stress Managment</label><br>
             <input type="radio" name="activity_category" id="choice 1" value="Physical Health">
@@ -29,12 +29,12 @@
             <br>
             <br>
         
-            <label for="act_comp">Activity Completed:</label>
+            <label for="act_comp">Activity Completed:</label><br>
             <input type="text" id="act_comp" name="activity_completed"><br>
         
             <br>
         
-            <label for="act_dur">Activity Duration (Minutes):</label>
+            <label for="act_dur">Activity Duration (Minutes):</label><br>
             <input type="number" id="act_dur" name="activity_duration"><br>
         
             <br>
